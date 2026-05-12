@@ -28,6 +28,12 @@ pipeline {
         // Disable concurrent builds
         disableConcurrentBuilds()
     }
+
+    triggers {
+        // Poll SCM every 5 minutes for changes (H/5 * * * *)
+        // Alternatively, configure a webhook in your SCM for push-based triggers
+        pollSCM('* * * * *')
+    }
     
     stages {
         stage('Checkout') {
